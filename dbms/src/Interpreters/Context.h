@@ -20,6 +20,7 @@
 #include <Interpreters/ClientInfo.h>
 #include <Interpreters/Settings.h>
 #include <Interpreters/TimezoneInfo.h>
+#include <Storages/Transaction/StorageEngineType.h>
 #include <common/MultiVersion.h>
 
 #include <chrono>
@@ -383,7 +384,7 @@ public:
     BackgroundProcessingPool & getBackgroundPool();
     BackgroundProcessingPool & getBlockableBackgroundPool();
 
-    void createTMTContext(const TiFlashRaftConfig & raft_config, pingcap::ClusterConfig && cluster_config);
+    void createTMTContext(const TiFlashRaftConfig & raft_config, pingcap::ClusterConfig && cluster_config, TiDB::NodeRole role);
 
     void initializeSchemaSyncService();
     SchemaSyncServicePtr & getSchemaSyncService();

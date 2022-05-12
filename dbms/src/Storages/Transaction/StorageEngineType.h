@@ -39,20 +39,26 @@ enum class SnapshotApplyMethod : std::int32_t
     DTFile_Single,
 };
 
-inline const std::string applyMethodToString(SnapshotApplyMethod method)
+inline std::string applyMethodToString(SnapshotApplyMethod method)
 {
     switch (method)
     {
-        case SnapshotApplyMethod::Block:
-            return "block";
-        case SnapshotApplyMethod::DTFile_Directory:
-            return "file1";
-        case SnapshotApplyMethod::DTFile_Single:
-            return "file2";
-        default:
-            return "unknown(" + std::to_string(static_cast<std::int32_t>(method)) + ")";
+    case SnapshotApplyMethod::Block:
+        return "block";
+    case SnapshotApplyMethod::DTFile_Directory:
+        return "file1";
+    case SnapshotApplyMethod::DTFile_Single:
+        return "file2";
+    default:
+        return "unknown(" + std::to_string(static_cast<std::int32_t>(method)) + ")";
     }
     return "unknown";
 }
+
+enum class NodeRole
+{
+    WriteNode,
+    ReadNode,
+};
 
 } // namespace TiDB
